@@ -52,6 +52,7 @@
 		B98489652B70113E000B5B1B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9A21A382B6EF42500E11CC1 /* ZenListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -88,7 +89,6 @@
 				B98489652B70113E000B5B1B /* Controller */,
 				B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */,
 				B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */,
-				B9A21A382B6EF42500E11CC1 /* ZenListViewController.swift */,
 				B9213B0F2B6F25340063F13E /* Constants.swift */,
 				B9A21A3D2B6EF42600E11CC1 /* Assets.xcassets */,
 				B9A21A3F2B6EF42600E11CC1 /* LaunchScreen.storyboard */,
