@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B9213B102B6F25340063F13E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9213B0F2B6F25340063F13E /* Constants.swift */; };
+		B98489682B701171000B5B1B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98489672B701171000B5B1B /* Item.swift */; };
 		B9A21A352B6EF42500E11CC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */; };
 		B9A21A372B6EF42500E11CC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */; };
 		B9A21A392B6EF42500E11CC1 /* ZenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A21A382B6EF42500E11CC1 /* ZenListViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		B9213B0F2B6F25340063F13E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B98489672B701171000B5B1B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B9A21A312B6EF42500E11CC1 /* ZenList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B98489642B701132000B5B1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B98489672B701171000B5B1B /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B98489652B70113E000B5B1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B98489662B701146000B5B1B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B9A21A3A2B6EF42500E11CC1 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B9A21A282B6EF42500E11CC1 = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +83,13 @@
 		B9A21A332B6EF42500E11CC1 /* ZenList */ = {
 			isa = PBXGroup;
 			children = (
+				B98489642B701132000B5B1B /* Model */,
+				B98489662B701146000B5B1B /* View */,
+				B98489652B70113E000B5B1B /* Controller */,
 				B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */,
 				B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */,
 				B9A21A382B6EF42500E11CC1 /* ZenListViewController.swift */,
 				B9213B0F2B6F25340063F13E /* Constants.swift */,
-				B9A21A3A2B6EF42500E11CC1 /* Main.storyboard */,
 				B9A21A3D2B6EF42600E11CC1 /* Assets.xcassets */,
 				B9A21A3F2B6EF42600E11CC1 /* LaunchScreen.storyboard */,
 				B9A21A422B6EF42600E11CC1 /* Info.plist */,
@@ -141,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B98489682B701171000B5B1B /* Item.swift in Sources */,
 				B9A21A392B6EF42500E11CC1 /* ZenListViewController.swift in Sources */,
 				B9A21A352B6EF42500E11CC1 /* AppDelegate.swift in Sources */,
 				B9A21A372B6EF42500E11CC1 /* SceneDelegate.swift in Sources */,

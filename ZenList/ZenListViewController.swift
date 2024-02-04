@@ -9,16 +9,15 @@ import UIKit
 
 class ZenListViewController: UITableViewController {
     
-    var itemArray:[String] = []
+    var itemArray = [Item]()
     
-    let defaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("Items.plist")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let items = defaults.array(forKey: K.PListKey.todoListArray) as? [String] {
-            itemArray = items
-        }
+        
+        loadDataFromLocalStorage()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,20 +26,20 @@ class ZenListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = itemArray[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: K.IdentifierKey.todoItemCell, for: indexPath)
         
-        cell.textLabel?.text = item
+        cell.accessoryType = item.done == true ? .checkmark : .none
+        cell.textLabel?.text = item.title
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(languageProgrammingArray[indexPath.row])
-        if tableView.cellForRow(at: indexPath)?.accessoryType != .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        }
+
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+        saveDataToLocalStorage()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -53,11 +52,12 @@ class ZenListViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add", style: .default) { action in
             
-            self.itemArray.append(textField.text!)
+            let newItem = Item()
+            newItem.title = textField.text!
             
-            self.defaults.set(self.itemArray, forKey: K.PListKey.todoListArray)
+            self.itemArray.append(newItem)
             
-            self.tableView.reloadData()
+            self.saveDataToLocalStorage()
         }
         
         alert.addTextField { alertTextField in
@@ -68,4 +68,30 @@ class ZenListViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    func saveDataToLocalStorage() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Encoding error: \(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func loadDataFromLocalStorage() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Decoder error: \(error)")
+            }
+        }
+    }
+    
 }
