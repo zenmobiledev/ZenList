@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct K {
+    
+    struct IdentifierKey {
+        static let todoItemCell = "ToDoItemCell"
+    }
+}
