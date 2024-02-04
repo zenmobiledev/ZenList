@@ -10,11 +10,15 @@ import UIKit
 class ZenListViewController: UITableViewController {
     
     var itemArray:[String] = []
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        if let items = defaults.array(forKey: K.PListKey.todoListArray) as? [String] {
+            itemArray = items
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,6 +54,8 @@ class ZenListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { action in
             
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: K.PListKey.todoListArray)
             
             self.tableView.reloadData()
         }

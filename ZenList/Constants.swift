@@ -12,4 +12,8 @@ struct K {
     struct IdentifierKey {
         static let todoItemCell = "ToDoItemCell"
     }
+    
+    struct PListKey {
+        static let todoListArray = "TodoListArray"
+    }
 }
