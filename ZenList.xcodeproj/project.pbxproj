@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B9213B102B6F25340063F13E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9213B0F2B6F25340063F13E /* Constants.swift */; };
-		B98489682B701171000B5B1B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98489672B701171000B5B1B /* Item.swift */; };
+		B949F3BF2B7045A20086C02D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B949F3BD2B7045A20086C02D /* DataModel.xcdatamodeld */; };
 		B9A21A352B6EF42500E11CC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */; };
 		B9A21A372B6EF42500E11CC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */; };
 		B9A21A392B6EF42500E11CC1 /* ZenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A21A382B6EF42500E11CC1 /* ZenListViewController.swift */; };
@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		B9213B0F2B6F25340063F13E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B98489672B701171000B5B1B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B949F3BE2B7045A20086C02D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		B9A21A312B6EF42500E11CC1 /* ZenList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		B98489642B701132000B5B1B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B98489672B701171000B5B1B /* Item.swift */,
+				B949F3BD2B7045A20086C02D /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -84,10 +84,10 @@
 		B9A21A332B6EF42500E11CC1 /* ZenList */ = {
 			isa = PBXGroup;
 			children = (
+				B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */,
 				B98489642B701132000B5B1B /* Model */,
 				B98489662B701146000B5B1B /* View */,
 				B98489652B70113E000B5B1B /* Controller */,
-				B9A21A342B6EF42500E11CC1 /* AppDelegate.swift */,
 				B9A21A362B6EF42500E11CC1 /* SceneDelegate.swift */,
 				B9213B0F2B6F25340063F13E /* Constants.swift */,
 				B9A21A3D2B6EF42600E11CC1 /* Assets.xcassets */,
@@ -168,9 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98489682B701171000B5B1B /* Item.swift in Sources */,
 				B9A21A392B6EF42500E11CC1 /* ZenListViewController.swift in Sources */,
 				B9A21A352B6EF42500E11CC1 /* AppDelegate.swift in Sources */,
+				B949F3BF2B7045A20086C02D /* DataModel.xcdatamodeld in Sources */,
 				B9A21A372B6EF42500E11CC1 /* SceneDelegate.swift in Sources */,
 				B9213B102B6F25340063F13E /* Constants.swift in Sources */,
 			);
@@ -395,6 +395,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B949F3BD2B7045A20086C02D /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B949F3BE2B7045A20086C02D /* DataModel.xcdatamodel */,
+			);
+			currentVersion = B949F3BE2B7045A20086C02D /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B9A21A292B6EF42500E11CC1 /* Project object */;
 }

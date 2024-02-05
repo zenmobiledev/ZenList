@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import CoreData
 
 class ZenListViewController: UITableViewController {
     
     var itemArray = [Item]()
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("Items.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        loadDataFromLocalStorage()
+        loadDataFromDatabase()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +40,7 @@ class ZenListViewController: UITableViewController {
 
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        saveDataToLocalStorage()
+        saveDataToDatabase()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -52,12 +53,13 @@ class ZenListViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add", style: .default) { action in
             
-            let newItem = Item()
+            let newItem = Item(context: self.context)
             newItem.title = textField.text!
+            newItem.done = false
             
             self.itemArray.append(newItem)
             
-            self.saveDataToLocalStorage()
+            self.saveDataToDatabase()
         }
         
         alert.addTextField { alertTextField in
@@ -69,28 +71,23 @@ class ZenListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func saveDataToLocalStorage() {
-        let encoder = PropertyListEncoder()
-        
+    func saveDataToDatabase() {
         do {
-            let data = try encoder.encode(itemArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print("Encoding error: \(error)")
+            print("Error saving data: \(error)")
         }
         
         self.tableView.reloadData()
     }
     
-    func loadDataFromLocalStorage() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            
-            do {
-                itemArray = try decoder.decode([Item].self, from: data)
-            } catch {
-                print("Decoder error: \(error)")
-            }
+    func loadDataFromDatabase() {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error load data: \(error)")
         }
     }
     
