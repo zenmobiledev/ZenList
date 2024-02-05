@@ -71,24 +71,45 @@ class ZenListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    //MARK: - Core Database Methods
+    
     func saveDataToDatabase() {
         do {
             try context.save()
         } catch {
-            print("Error saving data: \(error)")
+            print("Error save data: \(error)")
         }
         
         self.tableView.reloadData()
     }
     
-    func loadDataFromDatabase() {
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-        
+    func loadDataFromDatabase(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
         do {
             itemArray = try context.fetch(request)
         } catch {
             print("Error load data: \(error)")
         }
+        
+        tableView.reloadData()
+    }
+}
+
+extension ZenListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = NSPredicate(format: "\(K.AttributeCoreDataKey.title) CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: K.AttributeCoreDataKey.title, ascending: true)]
+        
+        loadDataFromDatabase(with: request)
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadDataFromDatabase()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }
